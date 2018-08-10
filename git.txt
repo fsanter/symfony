@@ -16,8 +16,8 @@ Git est utilisable avec plusieurs protocoles :
     à n'importe qui, pour qu'il puisse décrypter ce que vous
     envoyez
 
-Commandes :
-git clone : cloner/récupérer un projet pour le placer sur son poste
+###Commandes :
+**git clone** : cloner/récupérer un projet pour le placer sur son poste
 
 Pour envoyer ses modifications sur le serveur, il y a trois étapes:
 1- dire quels fichiers on veut envoyer
