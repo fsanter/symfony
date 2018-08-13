@@ -89,4 +89,17 @@ class AppController extends Controller
             ]
         );
     }
+
+
+    /**
+     * Exercice : Créer un mini site de trois pages
+     * grâce à un nouveau controller
+     * Vous créez les routes comme vous voulez :
+     *  - soit importées via le controlleur en annotation
+     *  - soit directement dans le fichier routing
+     * Vous créez 3 templates avec un pour chaque page
+     * avec dans chacun, un lien vers chacune
+     * des trois pages
+     *
+     */
 }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Welcome!</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        Page3<br>
+
+        <!-- pour inclure un template dans un autre, on utilise
+            la fonction twig include
+        -->
+        {{ include('menu/menu.html.twig') }}
+    </body>
+</html>

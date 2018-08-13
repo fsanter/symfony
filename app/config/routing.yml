@@ -12,6 +12,10 @@ app:
     resource: '@AppBundle/Controller/DefaultController.php'
     type: annotation
 
+menu:
+    resource: '@AppBundle/Controller/MenuController.php'
+    type: annotation
+
 # importer une route à la fois
 hello_the_world:
     path:     /hello-world
