@@ -17,4 +17,7 @@ hello_the_world:
     path:     /hello-world
     defaults: { _controller: AppBundle:App:index }
 
+salut:
+    path:     /salut
+    defaults: { _controller: AppBundle:App:salut }
 

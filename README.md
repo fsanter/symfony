@@ -66,3 +66,8 @@ le fichier de paramètre app/config/parameters.yml
 Ce fichier contient au miniimum les accès à la base de données
 et tout autre paramètre rajouté par les autres dévs
 
+
+Pour écraser toutes vos dernières modifs et reprendre
+la dernière version sur le serveur :
+git reset --hard origin/master
+git pull
