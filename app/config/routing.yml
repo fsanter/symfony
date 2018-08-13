@@ -21,3 +21,15 @@ salut:
     path:     /salut
     defaults: { _controller: AppBundle:App:salut }
 
+bonjour:
+    path:     /bonjour
+    defaults: { _controller: AppBundle:App:bonjour }
+
+aurevoir:
+    path:     /aurevoir
+    defaults: { _controller: AppBundle:App:aurevoir }
+
+now:
+    path:     /now
+    defaults: { _controller: AppBundle:App:now }
+

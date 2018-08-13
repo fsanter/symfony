@@ -32,5 +32,42 @@ class AppController extends Controller
      *
      * 1 route : 1 controller : 1 template
      */
+    public function bonjourAction(Request $request)
+    {
+        return $this->render('app/bonjour.html.twig');
+    }
 
+    /**
+     * Exercice : créer une nouvelle page
+     * qui affiche le contenu d'un template twig :
+     * vous mettez ce que vous voulez dans le template
+     * 1 route : 1 controller : 1 template
+     * route aurevoir
+     */
+    public function aurevoirAction() {
+        $now = date('d/m/Y');
+        return $this->render('app/aurevoir.html.twig',
+            [
+                'dateActuelle' => $now
+            ]
+        );
+    }
+
+    /**
+     * Exercice : créer une nouvelle page
+     * qui affiche le contenu d'un template twig :
+     * dans ce template vous passez un objet datetime
+     * qui contient la date actuelle
+     * 1 route : 1 controller : 1 template
+     * route now
+     */
+    public function nowAction() {
+        $dateTime = new \DateTime();
+
+        return $this->render('app/now.html.twig',
+            [
+                'dateActuelleDateTime' => $dateTime
+            ]
+        );
+    }
 }
