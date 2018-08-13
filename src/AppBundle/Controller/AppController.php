@@ -102,4 +102,11 @@ class AppController extends Controller
      * des trois pages
      *
      */
+
+    /**
+     * Exercice:
+     * Inclure une image dans le template
+     * routing.html.twig
+     *
+     */
 }
