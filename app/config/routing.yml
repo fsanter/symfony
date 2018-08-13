@@ -3,7 +3,18 @@
 #    type:     annotation
 #    prefix:   /
 
+# charge tous les controllers dans le dossier précisé
+#app:
+#    resource: '@AppBundle/Controller/'
+#    type: annotation
+
 app:
-    resource: '@AppBundle/Controller/'
+    resource: '@AppBundle/Controller/DefaultController.php'
     type: annotation
+
+# importer une route à la fois
+hello_the_world:
+    path:     /hello-world
+    defaults: { _controller: AppBundle:App:index }
+
 
