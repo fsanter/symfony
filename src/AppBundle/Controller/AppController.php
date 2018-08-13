@@ -82,7 +82,7 @@ class AppController extends Controller
         // grâce à un nom de route
         // équivalent de path() en twig
         $urlAurevoir = $this->generateUrl('aurevoir');
-        
+
         return $this->render('app/routing.html.twig',
             [
                 'urlAurevoir' => $urlAurevoir
