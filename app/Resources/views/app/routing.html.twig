@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Welcome!</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <!-- pour générer une url dans twig vers une route
+            il faut utiliser la fonction path()
+            on écrit pas l'url en dur sinon il faut la changer
+            quand on passe notre
+            projet en prod, sinon il faudra modifier toutes les urls
+            si jamais on décide de la changer
+        -->
+        <a href="{{ path('now') }}">Lien vers la page now</a>
+        <a href="{{ path('now') }}">Lien vers la page now</a>
+
+        <!-- lien généré directement dans le controller -->
+        <a href="{{ urlAurevoir }}">Lien vers la page aurevoir</a>
+
+
+    </body>
+</html>

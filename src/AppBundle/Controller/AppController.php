@@ -70,4 +70,23 @@ class AppController extends Controller
             ]
         );
     }
+
+    /**
+     * Exercice : créer une nouvelle page
+     * qui affiche un lien vers la page now :
+     * 1 route : 1 controller : 1 template
+     * route routing
+     */
+    public function routingAction() {
+        // méthode pour générer une url depuis un controller
+        // grâce à un nom de route
+        // équivalent de path() en twig
+        $urlAurevoir = $this->generateUrl('aurevoir');
+        
+        return $this->render('app/routing.html.twig',
+            [
+                'urlAurevoir' => $urlAurevoir
+            ]
+        );
+    }
 }

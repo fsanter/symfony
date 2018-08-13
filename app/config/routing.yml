@@ -33,3 +33,7 @@ now:
     path:     /now
     defaults: { _controller: AppBundle:App:now }
 
+routing:
+    path:     /routing
+    defaults: { _controller: AppBundle:App:routing }
+
