@@ -9,5 +9,53 @@
         <br >
         Langage TWIG :
         <br>
+
+        {# CECI EST DANS UN COMMENTAIRE TWIG :
+            Le commentaire twig n'est pas envoyé au client
+            contrairement au commentaire HTML
+            Ce sont des commentaires à destination
+            des développeurs
+        #}
+        <!-- CECI EST UN COMMENTAIRE HTML -->
+
+        {# pour afficher quelquechose en twig :
+            - le contenu d'une variable
+            - le retour d'une fonction
+            - etc.
+            On utilise les doubles accolades {{  }}
+            Exemple :
+        #}
+
+        {# affiche une chaine de caractères #}
+        {{ 'chaine de caractères' }}<br>
+        {# affiche le contenu d'une variable #}
+        {{ bonjour }}<br>
+        {# affiche le retour de la fonction path #}
+        {{ path('bonjour') }}<br>
+
+        {# affichage d'une variable de type tableau #}
+        {# impossible : {{ tableau }} #}
+        Affichage du tableau numérique : <br>
+        {{ tableau[0] }}<br>
+        {{ tableau[1] }}<br>
+        {{ tableau[2] }}<br>
+        {{ tableau[3] }}<br>
+        {{ tableau[4][0] }}<br>
+
+        Affichage du tableau associatif :<br>
+        {{ tableauAssociatif['clenumero1'] }}<br>
+        {{ tableauAssociatif['prenom'] }}<br>
+
+        Filtres twig :<br>
+        {# mettre en majuscule #}
+        {{ tableau[0] | upper }}<br>
+        {# mettre en miniscule #}
+        {{ tableau[0] | lower }}<br>
+        {# nombre d'entrée dans un tableau #}
+        Nombre d'élément dans le tableau : {{ tableau | length }}<br>
+        {# mettre la première lettre de chaque mot en majuscule #}
+        {{ bonjour | title }}<br>
+        {# formater une date #}
+        {{ datetime | date('d/m/Y H:i:s') }}
     </body>
 </html>
