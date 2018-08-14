@@ -20,6 +20,11 @@ request:
     resource: '@AppBundle/Controller/RequestController.php'
     type: annotation
 
+twig:
+    resource: '@AppBundle/Controller/TwigController.php'
+    type: annotation
+
+
 # importer une route à la fois
 hello_the_world:
     path:     /hello-world

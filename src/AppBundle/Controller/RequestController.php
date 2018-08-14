@@ -31,11 +31,10 @@ class RequestController extends Controller
             ]);
     }
 
-    /** Créer dans le template ci-dessus un formulaire en POST
+    /** Exercice : Créer dans le template ci-dessus un formulaire en POST
         avec un seul champ, et récupérer cette valeur lors de la
      * soumission du formulaire.
      * Affichez cette valeur dans le template à côté de
      * "Paramètre POST :"
      */
-
 }
