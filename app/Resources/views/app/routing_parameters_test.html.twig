@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Welcome!</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        Routing parameters test : {{ test }}<br>
+
+        <!-- générer une url correspondant à une route qui atten
+        des paramètres
+        version twig avec path()
+        -->
+        <a href="{{ path('routing_parameters', {id: 148}) }}">Lien vers cette même page</a>
+
+        <br>
+        Url générée côté controller : {{ urlAvecParametre }}
+
+    </body>
+</html>

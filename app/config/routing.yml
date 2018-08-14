@@ -45,5 +45,19 @@ routing:
 # on peut mettre une valeur par défaut à un paramètre d'url
 routing_parameters:
     path:     /routing-parameters/user/{id}
-    defaults: { _controller: AppBundle:App:routingParameters, id: 0 }
+    defaults: { _controller: AppBundle:App:routingParameters }
+
+routing_parameters_test:
+    path:     /routing-parameters-test/{test}
+    defaults: { _controller: AppBundle:App:routingParametersTest, test: 'test' }
+    # condition sur les paramètres : expression régulière pour
+    # forcer un format de paramètre dynamique
+    # si le format ne correspond pas, la route ne matche pas
+    requirements: { test: \d+ }
+
+
+# on peut mettre des paramètres d'url n'importe dans le pattern de la route
+routing_parameters2:
+    path:     /routing-{param}parameters-{param2}test/{test}
+    defaults: { _controller: AppBundle:App:routingParameters2 }
 

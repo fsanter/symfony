@@ -122,4 +122,25 @@ class AppController extends Controller
             ]
         );
     }
+
+
+    /** Exercice : créer une route avec
+     * un paramètre dynamique
+     * et lui donner la valeur par défaut 'test'
+     * et afficher cette valeur dans un nouveau template
+     */
+    public function routingParametersTestAction($test) {
+        // génération d'une url pour une route qui attend
+        // des paramètres
+        $url = $this->generateUrl('routing_parameters', ['id'=> 123]);
+
+        return $this->render('app/routing_parameters_test.html.twig', [
+            'test' => $test,
+            'urlAvecParametre' => $url
+        ]);
+    }
+
+    public function routingParameters2Action($test, $param, $param2) {
+        return new Response($test);
+    }
 }
