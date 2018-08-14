@@ -19,7 +19,9 @@ class RequestController extends Controller
         $paramGet = $request->query->get('paramget');
 
         // récupérérer un paramètre POST
-        $paramPost = "";
+        // avant $_POST['cle']
+        // $request->request
+        $paramPost = $request->request->get('nom');
 
         return $this->render('request/request.html.twig',
             [
