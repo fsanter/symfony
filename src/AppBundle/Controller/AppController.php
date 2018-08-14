@@ -109,4 +109,17 @@ class AppController extends Controller
      * routing.html.twig
      *
      */
+
+
+    /**
+     * Routing avec paramètre
+     */
+
+    public function routingParametersAction($id) {
+        return $this->render('app/routing_parameters.html.twig',
+            [
+              'id' => $id
+            ]
+        );
+    }
 }

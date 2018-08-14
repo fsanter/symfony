@@ -41,3 +41,9 @@ routing:
     path:     /routing
     defaults: { _controller: AppBundle:App:routing }
 
+#route avec des paramètres dynamiques
+# on peut mettre une valeur par défaut à un paramètre d'url
+routing_parameters:
+    path:     /routing-parameters/user/{id}
+    defaults: { _controller: AppBundle:App:routingParameters, id: 0 }
+
