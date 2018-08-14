@@ -56,6 +56,107 @@
         {# mettre la première lettre de chaque mot en majuscule #}
         {{ bonjour | title }}<br>
         {# formater une date #}
-        {{ datetime | date('d/m/Y H:i:s') }}
-    </body>
+        {{ datetime | date('d/m/Y H:i:s') }}<br>
+
+        {# concatener des variables, chaines #}
+        {{ 'bonjour' ~ ' à tous' ~ ', comment ça va ?' }}<br>
+
+        {# sécurisation des variables #}
+        {# le langage html, les scripts js ne sont
+        pas exécutés, interprétés mais affichés #}
+        {{ script }}<br>
+
+        {# pour forcer l'interpretation, il faut utiliser
+            le filtre raw
+            {{ script | raw }}
+        #}
+
+        {# afficher le texte tel quel #}
+        {{ html }}
+        {# interpreter les balises #}
+        {{ html | raw }}
+
+        {# VARIABLES GLOBALES TWIG #}
+        {# variable app qui contient toutes les
+            informations de l'application injectées
+            automatiquement dans les templates twig
+        #}
+        {# {{ dump(app) }}#}
+
+        {# objet request #}
+        {# {{ dump(app.request) }}#}
+        {# {{ dump(app.request.query.get('cle')) }}#}
+
+        {# objet session #}
+        {# {{ dump(app.session) }}#}
+
+        {# objet environment #}
+        {# {{ dump(app.environment) }}#}
+
+        {# savoir si on est mode debug ou pas #}
+        {# {{ dump(app.debug) }}#}
+
+        {{ dump(app.user) }}
+
+        {# STRUCTURES DE CONTROLES ET EXPRESSION #}
+        {# Un putain de IF #}
+        {% if 0 == 1 %}
+            <p>Non 0 n'est pas égal 1</p>
+        {% elseif 1 == 1 %}
+            <p>Oui 1 est égal 1</p>
+        {% else %}
+            <p>1 n'est ni égal à 1 ni à 0</p>
+        {% endif %}
+
+        {% if (0 == 1 or 1 == 1)%}
+            <p>Oui 1 est égal à 0 ou à 1</p>
+        {% endif %}
+
+        {% if variable is defined %}
+            La variable "variable" existe<br>
+        {% else %}
+            La variable "variable" n'existe pas<br>
+        {% endif %}
+
+        {# Boucle FOR : équivalent foreach en php #}
+        {% for value in tableauAssociatif %}
+            {{ value }}<br>
+        {% endfor %}
+
+        {# boucler avec les clés en plus#}
+        {% for key, value in tableauAssociatif %}
+            {{ key }} : {{ value }}<br>
+        {% endfor %}
+
+        {# boucler que sur les clés #}
+        {% for key in tableauAssociatif | keys %}
+            {{ key }}<br>
+        {% endfor %}
+
+        {# s'arreter aux 4 premiers éléments #}
+        {% for value in tableau | slice(0,4) %}
+            {# la variable loop existe dans toutes les boucles for
+                et contient des informations sur letour de boucle en cours
+                indice, est-ce le premier élément, le dernier,
+                nombre d'éléments restants
+            #}
+            {% if loop.first %}
+                Ceci est le premier élément :
+            {% endif %}
+
+            {% if loop.last %}
+                Ceci est le dernier élément :
+            {% endif %}
+
+            {{ loop.index }} : {{ value }}<br>
+        {% endfor %}
+
+        {# tester si pair ou impair #}
+        {% if 1 is even %}
+            1 est pair<br>
+        {% endif %}
+        {% if 1 is odd %}
+            1 est impair<br>
+        {% endif %}
+</body>
 </html>

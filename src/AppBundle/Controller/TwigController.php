@@ -25,13 +25,17 @@ class TwigController extends Controller
             'prenom' => 'Fab'
         ];
         $datetime = new \DateTime();
+        $script = "<script>alert('salut')</script>";
+        $html = "<p style='color:red'>Ce texte est en rouge</p>";
 
         return $this->render('twig/twig.html.twig',
             [
                 'bonjour' => $bonjour,
                 'tableau' => $tableau,
                 'tableauAssociatif' => $tableauAssociatif,
-                'datetime' => $datetime
+                'datetime' => $datetime,
+                'script' => $script,
+                'html' => $html
             ]
         );
     }
