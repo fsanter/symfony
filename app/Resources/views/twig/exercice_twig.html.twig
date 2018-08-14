@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Welcome!</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <br >
+        Exercice TWIG :
+        <br>
+
+        <table style="border: 1px solid">
+        {% for value in tableau %}
+
+            <tr>
+                <td style="border: 1px solid;
+                    {% if value | length > 4 %}color:red{% endif %}">
+                    {{ value }}
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+</body>
+</html>

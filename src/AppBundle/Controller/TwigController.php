@@ -39,4 +39,32 @@ class TwigController extends Controller
             ]
         );
     }
+
+    /**
+     * Exercice :
+     * Créer une route, méthode de controller, template
+     * qui affiche un tableau html grâce à une variable de type
+     * table passé depuis le controller
+     * ce tableau est un tableau de chaines de caractères
+     * et les lignes du tableau html qui contiennt une chaine
+     * qui fait plus de 4 caractères doivent être écrite en rouge
+     *
+     *
+     */
+
+    /**
+     * @Route("/exercice-twig", name="exercice_twig")
+     */
+    public function exerciceTwigAction() {
+        $tableau = [
+            'chaine numéro 1',
+            'test',
+            'salut',
+            'un'
+        ];
+
+        return $this->render('twig/exercice_twig.html.twig',
+            ['tableau' => $tableau]
+        );
+    }
 }
