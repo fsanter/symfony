@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Welcome!</title>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <!-- la fonction dump twig n'est utilisable
+        que l'environnement de dev de symfony -->
+        {# {{ dump(request) }} #}
+
+        <br >
+
+        Paramètre GET : {{ paramGet }}<br>
+        Paramètre POST : {{ paramPost }}
+    </body>
+</html>

@@ -71,3 +71,7 @@ Pour écraser toutes vos dernières modifs et reprendre
 la dernière version sur le serveur :
 git reset --hard origin/master
 git pull
+
+
+Commande symfony pour lister toutes les routes existantes:
+php bin/console debug:router
