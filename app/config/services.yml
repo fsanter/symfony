@@ -33,3 +33,13 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+
+    # services perso
+    app.toilette:
+        public: true
+        class: AppBundle\Service\Toilette
+        arguments:
+            - "@app.lavabo"
+
+    app.lavabo:
+        class: AppBundle\Service\Lavabo

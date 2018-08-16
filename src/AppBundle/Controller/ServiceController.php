@@ -85,4 +85,21 @@ class ServiceController extends Controller
 
         $toilette->utiliser();
     }
+
+    /**
+     * @Route("/service-toilette", name="service_toilette")
+     */
+    public function utiliserToiletteServiceAction() {
+        // utiliser les deux classes sans services
+
+        // ici le container va instancier pour nous
+        // l'objet toilette
+        // et comme l'objet toilette dépend de lavabo
+        // l'objet lavabo va être instancié automatiquement aussi
+        // puis être au constructeur de toilette
+        $toilette = $this->get('app.toilette');
+        $toilette->utiliser();
+
+        return new Response();
+    }
 }
