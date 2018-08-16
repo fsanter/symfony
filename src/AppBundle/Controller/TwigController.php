@@ -107,7 +107,7 @@ class TwigController extends Controller
      *
      * - passer ce tableau au template
      *
-     * - ce template doit hérité du template base.html.twig
+     * - ce template doit hériter du template base.html.twig
      * puis redéfinir le block body
      * pour y créer un tableau html qui affiche
      * tous les noms et prénoms (un nom et prénom par ligne)
@@ -141,5 +141,24 @@ class TwigController extends Controller
         );
 
         return $response;
+    }
+
+    public function exoRenderAction() {
+        $now = new \DateTime();
+
+        // avec la méthode modify du datetime
+        $now->modify('+2 day');
+
+        // équivalent avec DateInterval
+        $dateInterval = new \DateInterval("P2D");
+        //$now->add($dateInterval);
+
+        // si je veux ajouter 2 jours, 2 heures et 2 minutes
+        $dateInterval = new \DateInterval("P2DT2H2M");
+        $now->add($dateInterval);
+
+        // au total, on a donc ajouté 4 jours, 2 heures et 2 minutes
+
+        return new Response($now->format("d/m/Y H:i:s"));
     }
 }
