@@ -158,5 +158,13 @@
         {% if 1 is odd %}
             1 est impair<br>
         {% endif %}
+
+        {# déclarer une variable TWIG  qui ne provient pas
+            d'un controller : SET
+        #}
+
+        {% set variableTwig = 'variable déclarée en twig' %}
+        {% set variableTwig = variableTwig ~ " concaténée" %}
+        {{ variableTwig }}
 </body>
 </html>

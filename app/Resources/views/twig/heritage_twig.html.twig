@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{#
+    redéfinit le contenu du bloc ayant le même, se trouvant
+    dans le template parent
+    (cherche en cascade dans les différents niveaux
+    d'héritage, comme dans l'héritage de classe PHP)
+#}
+{% block title %}
+    {#
+        affiche ce qui se trouvait dans le bloc du même
+        dans le template parent
+    #}
+    {{ parent() }}
+
+    Nouveau titre
+
+    {# on peut appeler parent où on veut,
+    et autant de fois qu'on veut#}
+    {{ parent() }}
+{% endblock %}
+
+{% block stylesheets %}
+    {# parent() n'est pas appelé donc le contenu du block
+        est complétement remplacé
+    #}
+
+    <link rel="stylesheet" href="fichier.css">
+{% endblock %}
+
+{% block body %}
+    {# inclusion de controller : pour repasser par un controller
+        et avoir avoir par exemple à des services
+        comme doctrine, instancier des classes,
+        faire des traitements dont la place se trouvent
+        dans un controller et non dans un template
+    #}
+    {{ render(controller('AppBundle:Twig:render')) }}
+    <br>
+    {{ render(controller('AppBundle:Twig:renderParam', {'entier':23})) }}
+{% endblock %}

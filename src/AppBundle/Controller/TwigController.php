@@ -67,4 +67,21 @@ class TwigController extends Controller
             ['tableau' => $tableau]
         );
     }
+
+    /**
+     * @Route("/heritage-twig", name="heritage_twig")
+     */
+    public function heritageTwigAction() {
+        return $this->render('twig/heritage_twig.html.twig');
+    }
+
+    public function renderAction() {
+        $nombre = 500 * 6 / 1.5;
+        return new Response($nombre);
+    }
+
+    public function renderParamAction($entier) {
+        $nombre = $entier * 6 / 1.5;
+        return new Response($nombre);
+    }
 }
