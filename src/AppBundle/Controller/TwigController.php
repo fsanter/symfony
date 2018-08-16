@@ -75,13 +75,71 @@ class TwigController extends Controller
         return $this->render('twig/heritage_twig.html.twig');
     }
 
+    /**
+     * méthode appelée depuis un render
+     * dans un template twig
+     * pas besoin de définir une route
+     */
     public function renderAction() {
         $nombre = 500 * 6 / 1.5;
         return new Response($nombre);
     }
 
+    /**
+     * méthode avec paramètre appelée depuis un render
+     * dans un template twig
+     * pas besoin de définir une route
+     */
     public function renderParamAction($entier) {
         $nombre = $entier * 6 / 1.5;
         return new Response($nombre);
+    }
+
+    /**
+     *
+     * Exercice :
+     * Créer une nouvelle page dans ce controller
+     * route, méthode controller, template
+     *
+     * Côté controller :
+     * - déclarer une variable de type tableau numérique
+     * - remplir dans avec des noms et prénoms (tableau associatif)
+     *
+     * - passer ce tableau au template
+     *
+     * - ce template doit hérité du template base.html.twig
+     * puis redéfinir le block body
+     * pour y créer un tableau html qui affiche
+     * tous les noms et prénoms (un nom et prénom par ligne)
+     *
+     * - ce template doit inclure un controller
+     * (nouvelle méthode controller)
+     * - cette méthode doit renvoyer sous forme de chaine
+     * la date actuelle + 2 jours
+     * et indiquer donc dans le template :
+     * "Dans deux jours nous serons le :" {{ date+2 }}
+     *
+     *
+     *
+     *
+     */
+
+    /**
+     * @Route("/exo-heritage-twig", name="exo_heritage_twig")
+     */
+    public function exoHeritageTwigAction() {
+        $tab = [];
+        $tab[] = ['nom' => 'Nomtest', 'prenom' => 'Prenomtest'];
+        $tab[] = ['nom' => 'Nomtest2', 'prenom' => 'Prenomtest2'];
+        $tab[] = ['nom' => 'Nomtest3', 'prenom' => 'Prenomtest3'];
+        $tab[] = ['nom' => 'Nomtest4', 'prenom' => 'Prenomtest4'];
+
+        $response = $this->render('twig/exo_heritage_twig.html.twig',
+            [
+                'tab' => $tab
+            ]
+        );
+
+        return $response;
     }
 }
