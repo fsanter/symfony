@@ -17,7 +17,7 @@ class MenuController extends Controller
         return $this->render('menu/page1.html.twig');
     }
 
-    /**
+    /**<
      * @Route("/page2", name="page2")
      */
     public function page2Action(Request $request)

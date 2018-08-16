@@ -24,6 +24,10 @@ twig:
     resource: '@AppBundle/Controller/TwigController.php'
     type: annotation
 
+service:
+    resource: '@AppBundle/Controller/ServiceController.php'
+    type: annotation
+
 # importer une route à la fois
 hello_the_world:
     path:     /hello-world
