@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ dump(articles) }}
+    <br>
+    {% for article in articles %}
+        <div style="border:1px solid; margin-bottom:20px">
+            <span>{{ article.title }}</span>
+            <span>{{ article.content }}</span>
+            <span>{{ article.createdAt | date('d/m/Y H:i') }}</span>
+        </div>
+    {% endfor %}
+{% endblock %}
