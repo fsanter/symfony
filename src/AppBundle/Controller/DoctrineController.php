@@ -271,10 +271,40 @@ class DoctrineController extends Controller
         // 3 récupérer les categories dont
         // la date de création est aujourd'hui
         // 4- récupérer les articles dont le titre est
-        //  soit "titre" "nouvel article", et sont désactivé
+        //  soit "titre" soit "nouvel article", et sont désactivés
         // 5- récupérer les articles activés triés du plus récent
         // au plus vieux
 
+        $em = $this->getDoctrine()->getManager();
+
+        // 1
+        $em->getRepository('AppBundle:Article')->findAll();
+
+        // 2
+        $em->getRepository('AppBundle:Article')->find(55);
+        $em->getRepository('AppBundle:Article')->findOneById(55);
+
+        // 3
+        // on ne peut pas récupérer les articles d'aujourd'hui
+        // car createdAt est un datetime et non un date
+        // et il nous en fait récupérer tous les articles
+        // doint le createdAt est compris entre 00:00:00 et 23:59:59
+        // infaisable avec les méthodes findBy
+        $now = new \DateTime();
+        $em->getRepository('AppBundle:Category')
+            ->findBy(['createdAt' => $now]);
+
+        // 4
+        $em->getRepository('AppBundle:Article')
+            ->findBy(['title' => ['titre', 'nouvel article'], 'enabled' => false]);
+
+        // 5
+        $em->getRepository('AppBundle:Article')
+            ->findBy(['enabled' => true], ['createdAt' => 'DESC']);
+
+        // 6 tous les articles triés du plus récent au plus vieux
+        $em->getRepository('AppBundle:Article')
+            ->findBy([], ['createdAt'=> 'DESC']);
 
         return new Response("Custom read exo");
     }

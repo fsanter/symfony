@@ -10,4 +10,7 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function recupComplexe() {
+        // faire des conditions plus complexe
+    }
 }
