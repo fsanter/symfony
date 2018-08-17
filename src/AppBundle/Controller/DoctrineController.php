@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Article;
+use AppBundle\Entity\Category;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -104,5 +106,49 @@ class DoctrineController extends Controller
                 'articles' => $articles
             ]
         );
+    }
+
+    /**
+     * Exercice :
+     * Créer l'entité Category avec les propriétés
+     * suivantes :
+     * - name
+     * - createdAt
+     * Vous faites une méthode dans le controller
+     * qui crée une catégorie
+     *
+     */
+    /**
+     * Create entity
+     * @Route("/create-category", name="create_category")
+     */
+    public function createCategoryAction(Request $request)
+    {
+        // créer une categorie : instanciation
+        $category = new Category();
+        $category->setName('Informatique2');
+        $category->setCreatedAt(new \DateTime());
+
+        // récupérer le manager de doctrine
+        // qui va permettre les échanges avec la BDD
+        $em = $this->getDoctrine()->getManager();
+
+        // indique à doctrine qu'il faut gérer cette objet
+        // en l'enregistrant lors du prochain flush
+        $em->persist($category);
+
+        // executer les requêtes sql des objets
+        // sur lesquels on a fait un persist
+        try {
+            $em->flush();
+            $message = "La catégorie a été créée.";
+        }
+        catch (UniqueConstraintViolationException $e) {
+            $message = "La catégorie ".$category->getName()." existe déjà.";
+        }
+
+        // à partir d'ici, $category->getId() renvoie l'id généré
+
+        return new Response($message);
     }
 }
