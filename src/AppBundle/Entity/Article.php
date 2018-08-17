@@ -8,8 +8,8 @@ namespace AppBundle\Entity;
 class Article
 {
     /**
- * @var int
- */
+     * @var int
+     */
     private $id;
 
     /**
@@ -32,6 +32,13 @@ class Article
      */
     private $enabled;
 
+    public function __construct()
+    {
+        // valeur par défaut des propriétés
+        // le createdAt sera toujours la date
+        // à laquelle l'instanciation de l'article se fait
+        $this->createdAt = new \DateTime();
+    }
 
     /**
      * Get id.

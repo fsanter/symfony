@@ -32,8 +32,12 @@ class DoctrineController extends Controller
         $article->setTitle("Titre article 1");
         $article->setContent("Voici le contenu de l'article");
 
-        $now = new \DateTime();
-        $article->setCreatedAt($now);
+        /*
+         * Inutile car le constructeur de Article
+         * le fait déjà
+         $now = new \DateTime();
+         $article->setCreatedAt($now);
+         */
 
         $article->setEnabled(false);
 
@@ -214,5 +218,64 @@ class DoctrineController extends Controller
         // à partir d'ici, $category->getId() renvoie l'id généré
 
         return new Response($message);
+    }
+
+    /**
+     * Create entity
+     * @Route("/read-custom", name="read_custom")
+     */
+    public function readCustomAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        // sélectionnez une entité par son id
+        $article = $em->getRepository('AppBundle:Article')
+            ->find(4);
+
+        // sélectionnez toutes les entités
+        $articles = $em->getRepository('AppBundle:Article')
+            ->findAll();
+
+        // sélectionnez toutes les entités correspondant
+        // à des critères
+        // le tableau passé en paramètre de findBy
+        // est un tableau où les clés doivent correspondre
+        // aux propriétés mappées
+        // et où chaque clé génère un AND dans la requête sql
+        $articles = $em->getRepository('AppBundle:Article')
+            ->findBy(['title' => 'Titre 1', 'enabled' => true]);
+
+        // sélectionnez une entité correspondant
+        // à des critères : si plusieurs entités correspondents
+        // seele la première trouvée en bdd est renvoyée
+        $article = $em->getRepository('AppBundle:Article')
+                ->findOneBy(['enabled' => true]);
+
+        // un article par son nom, il existe dans doctrine
+        // des méthodes dynamiques
+        $article = $em->getRepository('AppBundle:Article')
+            ->findOneByTitle("Titre article ' 1");
+
+        var_dump($article);
+
+
+        return new Response("Custom read");
+    }
+
+    /**
+     * Create entity
+     * @Route("/read-custom-exo", name="read_custom_exo")
+     */
+    public function readCustomExoAction() {
+        // 1- récupérer tous les articles de la base
+        // 2- récupérer l'article dont l'identifiant est 55
+        // 3 récupérer les categories dont
+        // la date de création est aujourd'hui
+        // 4- récupérer les articles dont le titre est
+        //  soit "titre" "nouvel article", et sont désactivé
+        // 5- récupérer les articles activés triés du plus récent
+        // au plus vieux
+
+
+        return new Response("Custom read exo");
     }
 }
