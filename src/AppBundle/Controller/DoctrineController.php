@@ -109,6 +109,70 @@ class DoctrineController extends Controller
     }
 
     /**
+     * Create entity
+     * @Route("/update", name="update")
+     */
+    public function updateAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        // modifier un article : d'abord le récupérer
+        $article = $em->getRepository('AppBundle:Article')
+                      ->find(2);
+
+        if (!$article instanceof Article) {
+            throw new NotFoundHttpException();
+        }
+
+        $now = new \DateTime();
+        $nowStr = $now->format('d/m/Y H:i');
+        $article->setTitle("Nouveau titre ".$nowStr);
+
+        // indique à doctrine qu'il faut gérer cette objet
+        // en le modifiant lors du prochain flush
+
+        // en fait le persist est inutile
+        // car il sert à indiquer à doctrine de gérer cet objet
+        // sauf que doctrine le connait déjà
+        // vu qu'il a récupéré au dessus avec le find()
+        // $em->persist($article);
+
+        // executer les requêtes sql des objets
+        // sur lesquels on a fait un persist
+        $em->flush();
+
+        return $this->render('doctrine/create.html.twig',
+            [
+                'article' => $article
+            ]
+        );
+    }
+
+    /**
+     * Create entity
+     * @Route("/delete", name="delete")
+     */
+    public function deleteAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        // supprimer un article : d'abord le récupérer
+        $article = $em->getRepository('AppBundle:Article')
+                        ->find(4);
+
+        if (!$article instanceof Article) {
+            throw new NotFoundHttpException();
+        }
+
+        // indiqué à doctrine de supprimer l'article
+        // lors du prochain flush
+        $em->remove($article);
+
+        $em->flush();
+
+        return new Response("Article ".$article->getId()." supprimé");
+    }
+
+    /**
      * Exercice :
      * Créer l'entité Category avec les propriétés
      * suivantes :
