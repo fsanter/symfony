@@ -28,6 +28,11 @@ service:
     resource: '@AppBundle/Controller/ServiceController.php'
     type: annotation
 
+doctrine:
+    resource: '@AppBundle/Controller/DoctrineController.php'
+    type: annotation
+    prefix: doctrine
+
 # importer une route à la fois
 hello_the_world:
     path:     /hello-world

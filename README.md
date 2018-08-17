@@ -75,3 +75,16 @@ git pull
 
 Commande symfony pour lister toutes les routes existantes:
 php bin/console debug:router
+
+### Doctrine :
+Gérer les entités dans symfony
+1- Créer une base de données
+2- Créer des entités
+3- Mettre à jour la base de données
+4- Utilisez les entités (objets) avec le CRUD, etc.
+
+1- php bin/console doctrine:database:create
+2- php bin/console doctrine:generate:entity
+3- php bin/console doctrine:schema:update
+4- dans vos controllers
+
