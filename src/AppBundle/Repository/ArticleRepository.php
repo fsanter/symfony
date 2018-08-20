@@ -10,7 +10,43 @@ namespace AppBundle\Repository;
  */
 class ArticleRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function recupComplexe() {
+    public function findByCreatedAtNow() {
         // faire des conditions plus complexe
+        // SELECT * FROM Article WHERE
+        //
+        // created_at >= '2018-08-20 00:00:00'
+        // AND created_at <= '2018-08-20 23:59:59'
+
+        // created_at BETWEEN '2018-08-20 00:00:00'
+        // AND '2018-08-20 23:59:59'
+
+        // created_at LIKE '2018-08-20%'
+        $qb = $this->createQueryBuilder('a');
+
+        $now = date('Y-m-d');
+        $qb->where('a.createdAt LIKE :createdAt')
+            ->setParameter('createdAt', $now.'%')
+        ;
+
+        $query = $qb->getQuery();
+        $results = $query->getResult();
+
+        return $results;
+    }
+
+    public function findByTitleAndEnabled() {
+        $qb = $this->createQueryBuilder('a');
+
+        $qb->where('a.enabled = :enabled')
+            ->setParameter('enabled', false)
+            ->andWhere('a.title = :title OR a.title = :title2')
+            ->setParameter('title', 'titre')
+            ->setParameter('title2', 'nouvel article')
+        ;
+
+        $query = $qb->getQuery();
+        $results = $query->getResult();
+
+        return $results;
     }
 }

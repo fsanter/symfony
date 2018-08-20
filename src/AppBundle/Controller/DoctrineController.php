@@ -298,6 +298,10 @@ class DoctrineController extends Controller
         $em->getRepository('AppBundle:Article')
             ->findBy(['title' => ['titre', 'nouvel article'], 'enabled' => false]);
 
+        // même requête mais écrite dans le repo custom
+        $em->getRepository('AppBundle:Article')
+            ->findByTitleAndEnabled();
+
         // 5
         $em->getRepository('AppBundle:Article')
             ->findBy(['enabled' => true], ['createdAt' => 'DESC']);
@@ -307,5 +311,30 @@ class DoctrineController extends Controller
             ->findBy([], ['createdAt'=> 'DESC']);
 
         return new Response("Custom read exo");
+    }
+
+    /**
+     * custom repository
+     * @Route("/custom-repository", name="custom_repository")
+     */
+    public function customRepositoryAction() {
+        $em = $this->getDoctrine()->getManager();
+
+        $articles = $em->getRepository('AppBundle:Article')
+                        ->findByCreatedAtNow();
+
+        /*
+         *
+         * Exercice :
+         * Ecrire dans le repo custom, le code qui permet à doctrine :
+         * 1- de récupérer tous les articles dont l'id est supérieur à 3
+         * et dont la date de création est en août 2018
+         * 2- récupérer tous les articles activés et créés en 2018
+         */
+        return $this->render('doctrine/custom_repo.html.twig',
+            [
+                'articles' => $articles
+            ]
+        );
     }
 }
