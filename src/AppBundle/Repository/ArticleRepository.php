@@ -49,4 +49,42 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 
         return $results;
     }
+
+    public function findId3Createdat082018() {
+        $qb = $this->createQueryBuilder('a');
+
+        $qb->where('a.id > 3');
+        $qb->andWhere("a.createdAt LIKE '2018-08-%'");
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findByEnabled2018() {
+        $qb = $this->createQueryBuilder('a');
+
+        $qb->where('a.enabled = :enabled');
+        $qb->setParameter('enabled', true);
+        $qb->andWhere("a.createdAt LIKE '2018-%'");
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findByYear($year) {
+        $qb = $this->createQueryBuilder('a');
+
+        $qb->where("a.createdAt LIKE :param");
+        $qb->setParameter('param', $year.'%');
+
+        return $qb->getQuery()->getResult();
+    }
+
+    public function findByYearOrderedTitle($year) {
+        $qb = $this->createQueryBuilder('a');
+
+        $qb->where("a.createdAt LIKE :param");
+        $qb->setParameter('param', $year.'%');
+        $qb->orderBy('a.title', 'ASC');
+
+        return $qb->getQuery()->getResult();
+    }
 }

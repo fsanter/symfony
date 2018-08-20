@@ -331,6 +331,27 @@ class DoctrineController extends Controller
          * et dont la date de création est en août 2018
          * 2- récupérer tous les articles activés et créés en 2018
          */
+
+        // tous les articles dont id > 3 et de août 2018
+        $articles1 = $em->getRepository('AppBundle:Article')
+            ->findId3Createdat082018();
+
+        // tous les articles activés de 2018
+        $articles2 = $em->getRepository('AppBundle:Article')
+            ->findByEnabled2018();
+
+        // tous les articles de 2018
+        $articles2018 = $em->getRepository('AppBundle:Article')
+            ->findByYear(2018);
+
+        // tous les articles de 2017
+        $articles2017 = $em->getRepository('AppBundle:Article')
+            ->findByYear(2017);
+
+        // tous les articles de 2016 triés par ordre alphabétique sur le titre
+        $articles2016 = $em->getRepository('AppBundle:Article')
+            ->findByYearOrderedTitle(2016);
+
         return $this->render('doctrine/custom_repo.html.twig',
             [
                 'articles' => $articles
