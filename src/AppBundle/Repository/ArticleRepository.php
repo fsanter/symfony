@@ -87,4 +87,23 @@ class ArticleRepository extends \Doctrine\ORM\EntityRepository
 
         return $qb->getQuery()->getResult();
     }
+
+    public function findOneByProperty() {
+        $qb = $this->createQueryBuilder('a');
+
+        $query = $qb->getQuery();
+
+        // récupérer un seul résultat
+        // object : null si pas de résultat
+        // object : un objet si un ou plusieurs
+        $object = $query->getSingleResult();
+
+        // récupérer une seule valeur
+        // exceptions lancée si 0 ou plusieurs valeurs retournées
+        $scalarValue = $query->getSingleScalarResult();
+
+        // récupérer plusieurs enregistrements avec une seule valeur
+        // tableau de valeurs scalaires
+        $scalarValues = $query->getScalarResult();
+    }
 }

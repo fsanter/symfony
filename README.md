@@ -82,9 +82,11 @@ Gérer les entités dans symfony
 2- Créer des entités
 3- Mettre à jour la base de données
 4- Utilisez les entités (objets) avec le CRUD, etc.
+5- si on modifie la mapping (YML), on recharge les classes PHP
 
 1- php bin/console doctrine:database:create
 2- php bin/console doctrine:generate:entity
 3- php bin/console doctrine:schema:update
 4- dans vos controllers
+5- php bin/console doctrine:generate:entities AppBundle
 

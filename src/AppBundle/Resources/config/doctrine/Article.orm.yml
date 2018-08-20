@@ -21,4 +21,9 @@ AppBundle\Entity\Article:
         enabled:
             type: boolean
 
+    manyToOne:
+        category:
+            targetEntity: Category
+            inversedBy: articles
+
     lifecycleCallbacks: {  }

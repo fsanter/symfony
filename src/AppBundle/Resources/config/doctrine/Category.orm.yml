@@ -15,4 +15,10 @@ AppBundle\Entity\Category:
             unique: true
         createdAt:
             type: datetime
+
+    oneToMany:
+        articles:
+            targetEntity: AppBundle\Entity\Article
+            mappedBy: category
+
     lifecycleCallbacks: {  }

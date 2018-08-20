@@ -33,6 +33,11 @@ doctrine:
     type: annotation
     prefix: doctrine
 
+mapping:
+    resource: '@AppBundle/Controller/MappingRelationController.php'
+    type: annotation
+    prefix: mapping
+
 # importer une route à la fois
 hello_the_world:
     path:     /hello-world
