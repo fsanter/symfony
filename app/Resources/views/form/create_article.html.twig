@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Ajouter un article en base</h1>
+
+    {% for error in errors %}
+        <p style="color:red;">{{ error }}</p>
+    {% endfor %}
+
+    {% if message != "" %}
+        <div>
+            {{ message }}
+        </div>
+    {% endif %}
+
+
+    <form action="" method="post">
+        <label>Titre de l'article</label>
+        <input type="text" name="title" />
+        <br>
+        <label>Contenu de l'article</label>
+        <textarea name="content"></textarea>
+        <br>
+        <label>Activé</label>
+        <input type="checkbox" name="enabled"/>
+        <br>
+        <label>Catégorie</label>
+        <select name="category">
+            <option value="1">Caté1</option>
+            <option value="2">Caté2</option>
+        </select>
+        <br>
+
+        <input type="submit" value="Enregistrer" />
+    </form>
+{% endblock %}

@@ -38,6 +38,11 @@ mapping:
     type: annotation
     prefix: mapping
 
+form:
+    resource: '@AppBundle/Controller/FormController.php'
+    type: annotation
+    prefix: form
+
 # importer une route à la fois
 hello_the_world:
     path:     /hello-world
