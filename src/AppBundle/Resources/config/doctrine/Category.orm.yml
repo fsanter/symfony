@@ -20,5 +20,6 @@ AppBundle\Entity\Category:
         articles:
             targetEntity: AppBundle\Entity\Article
             mappedBy: category
+            cascade: ['persist']
 
     lifecycleCallbacks: {  }

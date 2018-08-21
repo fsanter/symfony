@@ -4,7 +4,36 @@
     <h1>Ajouter un article en base avec un formulaire
         créé dans le controller</h1>
 
-{{ dump(article) }}
-    {{ form(form) }}
+    {# afficher le formulaire en une fois #}
+    {# {{ form(form) }}#}
 
+    {# décomposer le formulaire :
+        - composé de champs :
+            - label
+            - input (widget)
+            - error
+    #}
+
+    {{ form_start(form) }}
+        <div style="color:red;">
+            {{ form_label(form.title, null, {'label_attr': {'class':'classdulabel'}}) }}
+            {{ form_widget(form.title) }}
+            {{ form_errors(form.title) }}
+        </div>
+        <div>
+            {{ form_label(form.content) }}
+            {{ form_widget(form.content) }}
+            {{ form_errors(form.content) }}
+        </div>
+        <div >
+            {{ form_label(form.enabled) }}
+            {{ form_widget(form.enabled) }}
+            {{ form_errors(form.enabled) }}
+        </div>
+        <div>
+            {{ form_label(form.category) }}
+            {{ form_widget(form.category) }}
+            {{ form_errors(form.category) }}
+        </div>
+    {{ form_end(form) }}
 {% endblock %}

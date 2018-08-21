@@ -36,6 +36,11 @@ class Category
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return "Catégorie : ".$this->name;
+    }
+
     /**
      * Get id.
      *
@@ -103,6 +108,7 @@ class Category
      */
     public function addArticle(\AppBundle\Entity\Article $article)
     {
+        $article->setCategory($this);
         $this->articles[] = $article;
 
         return $this;
@@ -128,5 +134,9 @@ class Category
     public function getArticles()
     {
         return $this->articles;
+    }
+
+    public function getLabelDropdown() {
+        return $this->id." - ".$this->name;
     }
 }
