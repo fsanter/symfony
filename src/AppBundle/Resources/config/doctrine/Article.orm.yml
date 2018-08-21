@@ -26,4 +26,9 @@ AppBundle\Entity\Article:
             targetEntity: Category
             inversedBy: articles
 
+    manyToMany:
+        tags:
+            targetEntity: AppBundle\Entity\Tag
+            mappedBy: articles
+
     lifecycleCallbacks: {  }

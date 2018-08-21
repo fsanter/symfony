@@ -1,0 +1,25 @@
+AppBundle\Entity\Tag:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\TagRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+            type: datetime
+        label:
+            type: string
+            length: 255
+            unique: true
+            column: _label
+
+    manyToMany:
+        articles:
+            targetEntity: AppBundle\Entity\Article
+            inversedBy: tags
+
+    lifecycleCallbacks: {  }

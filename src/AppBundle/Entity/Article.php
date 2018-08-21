@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Article
@@ -37,12 +38,18 @@ class Article
      */
     private $enabled;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $tags;
+
     public function __construct()
     {
         // valeur par défaut des propriétés
         // le createdAt sera toujours la date
         // à laquelle l'instanciation de l'article se fait
         $this->createdAt = new \DateTime();
+        $this->tags = new ArrayCollection();
     }
 
     /**
@@ -174,5 +181,42 @@ class Article
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     * Add tag.
+     *
+     * @param \AppBundle\Entity\Tag $tag
+     *
+     * @return Article
+     */
+    public function addTag(\AppBundle\Entity\Tag $tag)
+    {
+        $tag->addArticle($this);
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag.
+     *
+     * @param \AppBundle\Entity\Tag $tag
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeTag(\AppBundle\Entity\Tag $tag)
+    {
+        return $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTags()
+    {
+        return $this->tags;
     }
 }

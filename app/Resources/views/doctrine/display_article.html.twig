@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {{ article.title }}
+    <p>Tags associés :</p>
+    {# quand on fait article.tags, une requête SQL
+        est déclenchée pour récupérer les tags
+        associés à l'article
+    #}
+
+    {% for tag in article.tags %}
+        {{ tag.label }}<br>
+    {% endfor %}
+{% endblock %}

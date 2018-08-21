@@ -3,9 +3,9 @@
 namespace AppBundle\Entity;
 
 /**
- * Category
+ * Tag
  */
-class Category
+class Tag
 {
     /**
      * @var int
@@ -13,14 +13,14 @@ class Category
     private $id;
 
     /**
-     * @var string
-     */
-    private $name;
-
-    /**
      * @var \DateTime
      */
     private $createdAt;
+
+    /**
+     * @var string
+     */
+    private $label;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -32,41 +32,18 @@ class Category
      */
     public function __construct()
     {
+        $this->setCreatedAt(new \DateTime());
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Get id.
-     *
-     * @return int
-     */
+ * Get id.
+ *
+ * @return int
+ */
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set name.
-     *
-     * @param string $name
-     *
-     * @return Category
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name.
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**
@@ -74,7 +51,7 @@ class Category
      *
      * @param \DateTime $createdAt
      *
-     * @return Category
+     * @return Tag
      */
     public function setCreatedAt($createdAt)
     {
@@ -94,11 +71,35 @@ class Category
     }
 
     /**
+     * Set label.
+     *
+     * @param string $label
+     *
+     * @return Tag
+     */
+    public function setLabel($label)
+    {
+        $this->label = $label;
+
+        return $this;
+    }
+
+    /**
+     * Get label.
+     *
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    /**
      * Add article.
      *
      * @param \AppBundle\Entity\Article $article
      *
-     * @return Category
+     * @return Tag
      */
     public function addArticle(\AppBundle\Entity\Article $article)
     {
