@@ -32,6 +32,7 @@ class Category
      */
     public function __construct()
     {
+        $this->createdAt = new \DateTime();
         $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
