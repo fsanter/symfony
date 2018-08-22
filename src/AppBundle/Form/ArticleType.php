@@ -19,7 +19,8 @@ class ArticleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', null, ['attr' => ['pattern' => '.{,3}']])
+            //->add('title', null, ['attr' => ['pattern' => '.{,3}']])
+            ->add('title')
             ->add('content', TextareaType::class)
             ->add('enabled')
             //->add('category', null, ['choice_label' => 'getLabelDropdown'])

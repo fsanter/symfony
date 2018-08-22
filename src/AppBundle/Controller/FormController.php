@@ -121,6 +121,7 @@ class FormController extends Controller
         // automatiquement
         $form->handleRequest($request);
 
+
         // tester si le formulaire a été soumis
         if ($form->isSubmitted()) {
             // enregistrement en base si form valide
@@ -208,6 +209,11 @@ class FormController extends Controller
         // pour récupérer les valeurs transmises en POST
         // automatiquement
         $form->handleRequest($request);
+
+        // le form utilise le service validator
+        // pour vérifier si une entié est valide
+        // grâce au fichier Resources/config/validation.yml
+        // si l'entité n'est pas valide, alors $form->isValid() renvoie faux
 
         // tester si le formulaire a été soumis
         if ($form->isSubmitted()) {

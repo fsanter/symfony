@@ -1,0 +1,23 @@
+#https://symfony.com/doc/current/reference/constraints.html
+
+AppBundle\Entity\Article:
+    properties:
+        title:
+            - NotBlank:
+                message: Titre non valide
+            - Regex:
+                pattern: '/[a-zA-Z0-9]{3,}/'
+                message: Le titre doit contenir au moins 3 caractères
+            - Length:
+                min: 3
+                max: 50
+        content:
+          - Regex:
+                pattern: '/.{10,}/'
+                message: Le contenu doit contenir au moins 10 caractères
+
+AppBundle\Entity\Category:
+    constraints:
+            - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+                fields: name
+                message: Ce nom est déjà utilisé par une catégorie
