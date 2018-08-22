@@ -21,3 +21,11 @@ AppBundle\Entity\Category:
             - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
                 fields: name
                 message: Ce nom est déjà utilisé par une catégorie
+
+AppBundle\Entity\User:
+    properties:
+        email:
+            - Email:
+                  message: The email "{{ value }}" is not a valid email.
+        password:
+            - Regex: '/.{7,}/'

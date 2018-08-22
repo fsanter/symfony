@@ -5,8 +5,10 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Article;
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Tag;
+use AppBundle\Entity\User;
 use AppBundle\Form\ArticleType;
 use AppBundle\Form\CategoryType;
+use AppBundle\Form\UserType;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -239,7 +241,7 @@ class FormController extends Controller
      *      - email (unique)
  *          - mot de passe
      *      - createdAt
-     * - le createdAt doit setter automatiquement grâce
+     * - le createdAt doit être setté automatiquement grâce
      * au prePersist de l'entité
      *
      * - Mettre à jour la base
@@ -256,4 +258,32 @@ class FormController extends Controller
      * le formulaire, et qui enregistre le user si il est valide
      *
      */
+
+    /**
+     * @Route("/create-user", name="create_user")
+     */
+    public function addUserAction(Request $request) {
+        $em = $this->getDoctrine()->getManager();
+        $user = new User();
+
+        $formFactory = $this->get('form.factory');
+        $formBuilder = $formFactory->createBuilder(UserType::class, $user);
+
+        // récupérer l'objet form
+        $form = $formBuilder->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($user);
+            $em->flush();
+        }
+
+        return $this->render('form/create_user.html.twig',
+            [
+                'form' => $form->createView()
+            ]
+        );
+
+    }
 }

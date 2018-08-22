@@ -1,0 +1,23 @@
+AppBundle\Entity\User:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        createdAt:
+            type: datetime
+        email:
+            type: string
+            length: '100'
+            unique: true
+        password:
+            type: string
+            length: 255
+
+    lifecycleCallbacks:
+        prePersist: [prePersist]
