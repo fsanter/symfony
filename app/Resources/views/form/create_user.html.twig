@@ -1,8 +1,20 @@
 {% extends 'base.html.twig' %}
 
+{# automatiquement mettre les classes de bootstrap
+sur les éléments de formulaire#}
+
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{#
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+#}
+
 {% block body %}
     <h1>Ajouter un user en base avec un formulaire</h1>
 
-    {{ form(form) }}
+    <div style="width:50%;margin:10px;">
+        {{ form(form) }}
+    </div>
+
 
 {% endblock %}

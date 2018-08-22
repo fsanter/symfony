@@ -197,7 +197,6 @@ class FormController extends Controller
      */
     public function formCategoryTypeAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-
         $category = new Category();
 
         // récupérer l'usine à formulaire
