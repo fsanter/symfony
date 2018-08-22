@@ -31,4 +31,12 @@ AppBundle\Entity\Article:
             targetEntity: AppBundle\Entity\Tag
             mappedBy: articles
 
-    lifecycleCallbacks: {  }
+    lifecycleCallbacks:
+    # évenements déclenchés lors du cycle de vie d'une entité
+    # nomEvenement: nomFonction
+        prePersist: [prePersist]
+        #postPersist: postPersist
+        preUpdate: [preUpdate]
+        #postUpdate: postUpdate
+        #preRemove: preRemove
+        #postRemove: postRemove

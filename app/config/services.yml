@@ -43,3 +43,12 @@ services:
 
     app.lavabo:
         class: AppBundle\Service\Lavabo
+
+    app.entities_listener:
+        class: AppBundle\Listener\EntitiesListener
+        tags:
+            - { name: doctrine.event_listener, event: prePersist, method: prePersist  }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.event_listener, event: preRemove }
+            - { name: doctrine.event_listener, event: postPersist }
+            - { name: doctrine.event_listener, event: postUpdate }

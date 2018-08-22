@@ -57,6 +57,23 @@ class Article
         return $this->title;
     }
 
+    /*
+     * Configurée dans les lyfecycleCallbacks
+     * du fichier orm.yml
+     * prePersist est appelée juste avant un INSERT INTO
+     *
+     * si il y un prepersist attrapé dans un service
+     * (ici EntitiesListener), les deux sont exécutés
+     * et celui ici dans la classe en premier
+     */
+    public function prePersist() {
+        $this->createdAt = new \DateTime();
+    }
+
+    public function preUpdate() {
+        $this->updatedAt = new \DateTime();
+    }
+
     /**
      * Get id.
      *
