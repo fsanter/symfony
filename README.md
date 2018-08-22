@@ -87,7 +87,7 @@ Gérer les entités dans symfony
 
 1- php bin/console doctrine:database:create
 2- php bin/console doctrine:generate:entity
-3- php bin/console doctrine:schema:update
+3- php bin/console doctrine:schema:update --force
 4- dans vos controllers
 5- php bin/console doctrine:generate:entities AppBundle
 6- php bin/console doctrine:generate:form AppBundle:Article

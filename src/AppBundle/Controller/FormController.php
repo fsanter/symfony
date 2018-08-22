@@ -231,4 +231,29 @@ class FormController extends Controller
             ]
         );
     }
+
+    /**
+     *
+     * Exercice:
+     * - Créer une entité User
+     *      - email (unique)
+ *          - mot de passe
+     *      - createdAt
+     * - le createdAt doit setter automatiquement grâce
+     * au prePersist de l'entité
+     *
+     * - Mettre à jour la base
+     * - Créer un formulaire pour ajouter un utilisateur
+     * - créer des contraintes pour l'entité:
+     *      - le champ email doit de type email
+ *            et doit être unique
+     *      - le champ mot de passe doit contenir
+     *        au moins 7 caractères
+     *
+     *        (au moins 3 lettres, 2 chiffres et avoir au moins
+     *          7 caractères)
+     * - créer une méthode controller qui affiche dans un template
+     * le formulaire, et qui enregistre le user si il est valide
+     *
+     */
 }
